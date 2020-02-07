@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="ground_create" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<!-- {{ form.as_p }} -->
+	ground name:{{ form.ground_name }}
+	ground image:{{ form.ground_image }}
+	<button type="submit">Submit</button>
+</form>
+ <script type="text/javascript">
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#ground').addClass('active');
+        });
+    </script>
+{% endblock content %}

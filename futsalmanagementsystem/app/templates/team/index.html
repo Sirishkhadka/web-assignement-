@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block content %}
+<p>Team table : {{ counts }}<p>
+
+<a href="team_create" class="btn btn-primary float-right">ADD TEAM</a>
+
+<table class="table table-striped table-sm">
+	<tr>
+	
+			<th>id</th>
+			<th>image</th>
+			<th>name</th>
+			<th>actions</th>
+	
+	</tr>
+	{% for team in teams %}
+		<tr>
+		
+				<td>{{team.team_id}}</td>
+				{% load static %}
+				<td><img  style="width:100px;height:100px" src="{% static 'images/' %}{{team.team_image}}"/></td>
+				<td>{{team.team_name}}</td>
+				<td>
+					<a href="team_edit/{{ team.team_id }}">edit</a>
+					<span>|</span>
+					<a href="team_delete/{{team.team_id}}">delete</a>
+				</td>
+		
+		</tr>
+	{% endfor %}
+</table>
+<form method="post" action="/team">
+    {% csrf_token %}
+    <button type="submit" id="prev" value="prev" name="prev">prev</button>
+    <input style="width:40px;" type="number" value={{page}} id="page" name="page">
+    <button type="submit" id="next" value="next" name="next">next</button>
+</form>
+<script type="text/javascript">
+<!--        // let page=2;-->
+<!--        // $("#next").click(()=>{-->
+<!--        //     $("#page").val(page)-->
+<!--        //     $.ajax({-->
+<!--        //         method="post",-->
+<!--        //         data={page:$("page").val()},-->
+
+<!--        //     })-->
+<!--        // })-->
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#team').addClass('active');
+        });
+</script>
+<!--<script>-->
+<!--console.log($.ajax);-->
+<!--    $(document).ready(function(){-->
+<!--        	$("#searchbox").keydown(function(){-->
+<!--        		console.log($("#searchbox").val())-->
+<!--        		$.ajax({-->
+<!--        			data:{search:$("#searchbox").val()},-->
+<!--        			type: 'get',-->
+<!--        			url:"/user_search",-->
+<!--        			success:(data)=>{-->
+<!--        						$('tr').not('tr:first').remove();	-->
+<!--        						console.log(data['users'])-->
+<!--        						let html;-->
+<!--        						for(user of data['users']){-->
+<!--        						html="<tr>";-->
+<!--        						-->
+<!--        				-->
+<!--        						html+="<td>"+user.user_id+"</td>";-->
+<!--        						html+="<td><img style='width:100px;height:100px' src='{% static 'images/'%}"+-->
+<!--        						user.image+"' /></td>";-->
+<!--        						html+="<td>"+user.name+"</td>";-->
+<!--        						html+="<td>"+user.email+"</td>";-->
+<!--        						html+="<td>"+user.password+"</td>";-->
+<!--        						html+="<td><a href='/user_edit/"+user.user_id+"'>edit</a> | <a href='/user_delete/"+user.user_id+"'>delete</a></td>";-->
+<!--        						html+="</tr>";-->
+<!--        						console.log(html)-->
+<!--        						$('table').append(html)-->
+<!--        						}-->
+
+<!--        			},-->
+<!--        			error:function(error){-->
+<!--        				console.log(error)-->
+<!--        			},-->
+<!--        			complete:function(){-->
+<!--        				console.log("complete")-->
+<!--        			}-->
+<!--        		})-->
+
+<!--        	})-->
+<!--        })-->
+<!--</script>-->
+{% endblock content %}
+

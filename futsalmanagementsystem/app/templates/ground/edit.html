@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="/ground_update/{{ground.ground_id}}" enctype="multipart/form-data">
+			{% csrf_token %}
+			 ground name: <input type="text" name="ground_name" value="{{ground.ground_name}}"/>
+    {% load static %}
+			ground image:<img width="200" src="{% static 'images/' %}{{ground.ground_image}}" />
+    <input type="file" name="ground_image" />
+			<button type="submit">Submit</button>
+</form>
+ <script type="text/javascript">
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#ground').addClass('active');
+        });
+    </script>
+{% endblock content %}

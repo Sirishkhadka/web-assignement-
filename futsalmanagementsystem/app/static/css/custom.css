@@ -1,0 +1,34 @@
+#searchbox, .btn-primary{
+	margin:5px;
+}
+
+.sidebar{
+padding:0px;
+max-height: Calc(100vh - 60px);
+    height: 85vh;
+    border: solid 1px rgba(0,0,0,.125);
+}
+
+
+.sidebar ul li{
+
+	border:none;
+	cursor:pointer;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.headbar{
+	padding:0px;
+}
+
+.list-group .active a{
+	color:white !important;
+}
+
+.list-group a:hover{
+	text-decoration: none;
+}

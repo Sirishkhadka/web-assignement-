@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="/user_update/{{user.user_id}}" enctype="multipart/form-data">
+			{% csrf_token %}
+			 name: <input type="text" name="name" value="{{user.name}}"/>
+			 email: <input type="text" name="email" value="{{user.email}}"/>
+			 password: <input type="password" name="password" value="{{user.password}}"/>
+			<button type="submit">Submit</button>
+</form>
+ <script type="text/javascript">
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#user').addClass('active');
+        });
+    </script>
+{% endblock content %}

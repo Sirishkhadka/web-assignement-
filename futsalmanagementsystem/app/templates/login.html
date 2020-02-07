@@ -1,0 +1,9 @@
+<form action="user_login" method="POST">
+	{% csrf_token %}
+	email: <input type="text" name="email" value=""/>
+	password: <input type="password" name="password" value=""/>
+	<button type="submit">Submit</button>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+</form>

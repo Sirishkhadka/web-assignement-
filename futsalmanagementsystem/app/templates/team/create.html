@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="team_create" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<!-- {{ form.as_p }} -->
+	name:{{ form.team_name }}
+	image:{{form.team_image}}
+	<button type="submit">Submit</button>
+</form>
+ <script type="text/javascript">
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#team').addClass('active');
+        });
+    </script>
+{% endblock content %}

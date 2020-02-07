@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="/team_update/{{team.team_id}}" enctype="multipart/form-data">
+			{% csrf_token %}
+			 team name: <input type="text" name="team_name" value="{{team.team_name}}"/>
+			 <br/>
+			 {% load static %}
+			 <img height="100" src="{% static '/images/' %}{{team.team_image}}" />
+			 image:<input type="file" name="team_image" value={{team.team_image}}/>
+			<button type="submit">Submit</button>
+</form>
+ <script type="text/javascript">
+        $(function () {
+            $('.sidebar').find('.active').removeClass('active');
+            $('#team').addClass('active');
+        });
+    </script>
+{% endblock content %}
